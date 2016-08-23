@@ -20,20 +20,9 @@ Route::group(['middleware' =>'auth'],function(){
         return view('pages.index',['mainTitle' => '']);
     }]);
 
-    Route::group(['prefix'=>'vote'],function(){
-        Route::get('/',['as' => 'vote', 'uses' => 'TurnoutsController@index']);
-        Route::get('/static/{id?}',['as' => 'vote.static', 'uses' => 'TurnoutsController@show']);
-        Route::post('/store',['as' => 'vote.store','uses' => 'TurnoutsController@store']);
-        Route::patch('/{id?}',['as' => 'vote.update','uses' => 'TurnoutsController@update']);
-        Route::delete('/delete/{id?}',['as' => 'vote.delete','uses' => 'TurnoutsController@destroy']);
-        Route::get('/download/{filename?}',['as' => 'getFile','uses' => 'TurnoutsController@download']);
-    });
-
-    Route::group(['prefix' => 'apply'],function(){
-        Route::get('/',['as' => 'apply',  'uses' => 'ApplysController@index']);
-        Route::post('/store',['as' => 'apply.store','uses' => 'ApplysController@store']);
-        Route::patch('/{id?}',['as' => 'apply.update','uses' => 'ApplysController@update']);
-        Route::delete('/delete/{id?}',['as' => 'apply.delete','uses' => 'ApplysController@destroy']);
+    Route::group(['prefix' => 'forum'],function(){
+    Route::get('/',['as' => 'forum',  'uses' => 'ForumController@index']);
+    Route::patch('/{id?}',['as' => 'forum.update','uses' => 'ForumController@update']);
     });
     
     Route::group(['prefix' => 'manager'],function(){    

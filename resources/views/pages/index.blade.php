@@ -24,7 +24,7 @@
         <div class="info-box">
             <h1 class="mytitle"><?=$mainTitle?></h1>
             <p class="titleContent">歡迎來到</p>
-            <p class="titleContent">系學會　蜘人血統控制板</p>
+            <p class="titleContent">實驗室　蜘人血統控制板</p>
         </div>
     </div>
   </div>

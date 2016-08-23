@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title','活動報名')
-@section('pagename','活動報名')
+@section('title','實驗室')
+@section('pagename','實驗室')
 @section('content')
 <style>
     .tableStyle > td {
@@ -21,10 +21,7 @@
         $('#EditIntro').val(wrapItem.children().next().html());
         $('#EditStart').val(wrapItem.children().next().next().html());
         $('#EditEnd').val(wrapItem.children().next().next().next().html());
-        $('#index').attr('action','{{route('apply.update')}}/'+trueID);
-    }
-        function delIndex(trueID){
-        $('#delIndex').attr('action','{{route('apply.delete')}}/'+trueID);
+        $('#index').attr('action','{{route('forum.update')}}/'+trueID);
     }
 </script>
 <a role="button" class="button button-thirdary" style="position: relative;font-size: 20px;left: 87%" data-toggle="modal" data-target="#AddForm">新增</a>
@@ -50,40 +47,6 @@
     @endforeach
     </table>
     <center>{{$results->render()}}</center>
-@endsection
-@section('AddForm')
-    {!!Form::open([ 'class'=>'form-horizontal', 'method' => 'post', 'route' => 'apply.store'])!!}
-        <div class="modal-body">
-                <div class="form-group">
-                    {!!Form::label('AcuivityName','活動名稱',['class' => 'col-sm-2 control-label'])!!}
-                    <div class="col-sm-10">
-                        {!!Form::text('name',null,['class' => 'form-control', 'id' => 'AcuivityName', 'placeholder' => '輸入名稱'])!!}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {!!Form::label('introField','活動簡介',['class' => 'col-sm-2 control-label'])!!}
-                    <div class="col-sm-10">
-                        {!!Form::textarea('intro',null,['class' => 'form-control', 'id' => 'introField', 'placeholder' => '簡單介紹活動'])!!}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {!!Form::label('AcuivityNameStart','開始日期',['class' => 'col-sm-2 control-label'])!!}
-                    <div class="col-sm-10">
-                        {!!Form::date('start_at',\Carbon\Carbon::now())!!}
-                    </div>
-                </div>      
-                <div class="form-group">
-                {!!Form::label('AcuivityNameEnd','結束日期',['class' => 'col-sm-2 control-label'])!!}
-                    <div class="col-sm-10">
-                    {!!Form::date('end_at',\Carbon\Carbon::tomorrow())!!}
-                    </div>
-                </div>              
-        </div>
-        <div class="modal-footer">
-            {!!Form::button('關閉',['class' => 'btn btn-default','data-dismiss' => 'modal'])!!}
-            {!!Form::submit('儲存',['class' => 'btn btn-primary'])!!}
-        </div>
-    {!!Form::close()!!}
 @endsection
 @section('EditForm')
     {!!Form::open(['class'=> 'form-horizontal', 'id' => 'index', 'role'=> 'form', 'method' => 'patch'])!!}
