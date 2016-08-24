@@ -7,7 +7,7 @@
 <div class="jumbotron">
     <div class="container">
         <div class="row">
-            <h1>歡迎進入系學會 蜘人血統控制板</h1>
+            <h1>歡迎進入實驗室 蜘人血統控制板</h1>
             <p style="text-align:center">
                 <div class="wrap">
                     <a type="button" class="btn-slide2" href="{{route('google.auth')}}">

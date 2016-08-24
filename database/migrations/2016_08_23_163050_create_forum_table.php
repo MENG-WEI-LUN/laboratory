@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSuperUserInMembersTable extends Migration
+class CreateForumTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,12 @@ class AddSuperUserInMembersTable extends Migration
      */
     public function up()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->char('super_user',1)->after('studentID');
+        Schema::create('forum', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('title');
+            $table->text('content');
+            
+            $table->timestamps();
         });
     }
 
@@ -24,8 +28,6 @@ class AddSuperUserInMembersTable extends Migration
      */
     public function down()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->dropColumn('super_user');
-        });
+        Schema::drop('forum');
     }
 }
