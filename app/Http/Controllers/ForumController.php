@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect; 
-
-use App\Http\Requests;
+use Auth;
+use Gate;
+use App\Http\Requests\UserPostRequest;
 
 use App\Models\forum;
-
-use App\Models\log;
 
 class ForumController extends Controller
 {
@@ -24,6 +23,7 @@ class ForumController extends Controller
     public function index()
     {
         if(Gate::allows('show', Auth::user()) && Auth::user()->cannot('member')){
+            $obtain = forum::orderBy('id','DESC');
             return view('pages.forum',['mainTitle' => '討論區','results' => $obtain->paginate(11),'obtainArr' => $obtain->get()]);        
         }
         return view('home');
@@ -82,10 +82,8 @@ class ForumController extends Controller
      */
     public function update(Request $request)
     {
-        $input = Input::get();
-        $up = forum::where('title', '=', $input['title'])->update(array('title' => $input['title'],'context' => $input['context']));
-        $post = forum::all();
-        return Redirect::route('forum');
+        forum::all()->last()->update($request->except('_token'));
+        return redirect()->route('forum');
     }
 
     /**

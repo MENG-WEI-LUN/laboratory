@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class forum extends Model
 {
     protected $table = 'forum';
-    protected $fillable = ['title','context'];
+    protected $fillable = ['title','content'];
 }
