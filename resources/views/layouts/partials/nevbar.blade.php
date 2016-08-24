@@ -4,7 +4,7 @@
     </div>
 
     <!--logo start-->
-    <a href="/" class="logo">系學會 <span class="lite">蜘人血統控制板</span></a>
+    <a href="/" class="logo">實驗室 <span class="lite">蜘人血統控制板</span></a>
     <!--logo end-->
 
     <div class="top-nav notification-row">
@@ -49,33 +49,15 @@
             <li class="active">
                 <a class="">
                     <i class="icon_house_alt"></i>
-                    <span>資工系學會</span>
+                    <span>實驗室</span>
                 </a>
             </li>
             @can('show', Auth::user()) 
             {{-- dropMenu --}}
-            <li class="sub-menu">
-                <a class="" href="#">
-                    <i class="icon_like" aria-hidden="true"></i>
-                    <span>投票區</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                </a>
-                <ul class="sub" style="text-align: left">
-                    <a href="{{route('vote')}}">總項目</a>
-                    <?php
-                        $obtainArr = DB::table('turnouts')->orderBy('id','DESC')->get();    
-                        foreach($obtainArr as $items){
-                    ?>
-                        <li><a href="{{route('vote.static').'/'.$items->id}}">{{str_limit($items->item,10)}}</a></li>
-                    <?php
-                        }
-                    ?>
-                </ul>
-            </li>
             <li>
-                <a class="" href="{{route('apply')}}">
+                <a class="" href="{{route('forum')}}">
                     <i class="icon_documents_alt" aria-hidden="true"></i>
-                    <span>活動報名</span>
+                    <span>討論區</span>
                 </a>
             </li>
             @can('member', Auth::user())
